@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": "logs:CreateLogGroup",
+          "Resource": "arn:aws:logs:<REGION>:<ACCOUNT_ID>:*"
+          // Substitua <REGION> pela região desejada, por exemplo, us-east-1, e <ACCOUNT_ID> pelo ID da sua conta AWS.
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+          ],
+          "Resource": [
+              "arn:aws:logs:<REGION>:<ACCOUNT_ID>:log-group:/aws/lambda/<LAMBDA_NAME>:*"
+              // Substitua <LAMBDA_NAME> pelo nome da sua função Lambda que você está usando.
+          ]
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "states:StartExecution",
+              "states:DescribeExecution"
+          ],
+          "Resource": [
+              "arn:aws:states:<REGION>:<ACCOUNT_ID>:stateMachine:<STATE_MACHINE_NAME>",
+              "arn:aws:states:<REGION>:<ACCOUNT_ID>:execution:<STATE_MACHINE_NAME>:*"
+              // Substitua <STATE_MACHINE_NAME> pelo nome da sua State Machine e ajuste a região e o ID da conta AWS conforme necessário.
+          ]
+      },
+      {
+          "Effect": "Allow",
+          "Action": "s3:PutObject",
+          "Resource": "arn:aws:s3:::<BUCKET_NAME>/<FILE_PATH>"
+          // Substitua <BUCKET_NAME> pelo nome do seu bucket S3 e <FILE_PATH> pelo caminho do arquivo desejado dentro do bucket.
+      }
+  ]
+}

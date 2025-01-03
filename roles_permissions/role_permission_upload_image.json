@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "s3:GetObject",
+              "s3:PutObject",
+              "s3:DeleteObject"
+          ],
+          "Resource": [
+              "arn:aws:s3:::<BUCKET_NAME>/upload/*",  // Substitua <BUCKET_NAME> pelo nome do seu bucket S3
+              "arn:aws:s3:::<BUCKET_NAME>/input_data.json"  // Substitua <BUCKET_NAME> pelo nome do seu bucket S3
+          ]
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+          ],
+          "Resource": [
+              "arn:aws:logs:<REGION>:<ACCOUNT_ID>:log-group:/aws/lambda/<LAMBDA_FUNCTION_NAME>:*"  // Substitua <REGION>, <ACCOUNT_ID> e <LAMBDA_FUNCTION_NAME>
+          ]
+      }
+  ]
+}
