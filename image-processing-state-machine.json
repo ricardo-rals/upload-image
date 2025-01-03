@@ -7,7 +7,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "Arguments": {
-        "FunctionName": "arn:aws:lambda:us-east-1:442042529486:function:api-upload-image",
+        "FunctionName": "TROCAR_PARA_ARN_DA_FUNCAO_LAMBDA_UPLOAD_IMAGE",
         "Payload": "{% $states.input %}"
       },
       "Retry": [
@@ -30,7 +30,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "Arguments": {
-        "FunctionName": "arn:aws:lambda:us-east-1:442042529486:function:api-trigger",
+        "FunctionName": "TROCAR_PARA_ARN_DA_FUNCAO_LAMBDA_TEXTRACT",
         "Payload": "{% $states.input %}"
       },
       "Retry": [
@@ -54,7 +54,7 @@
       "Resource": "arn:aws:states:::lambda:invoke",
       "Output": "{% $states.result.Payload %}",
       "Arguments": {
-        "FunctionName": "arn:aws:lambda:us-east-1:442042529486:function:processamento",
+        "FunctionName": "TROCAR_PARA_ARN_DA_FUNCAO_LAMBDA_TEXT_PROCESSING",
         "Payload": "{% $states.input %}"
       },
       "Retry": [
